@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Vista.Web.Data.WorkshopStaff>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Workshop)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Workshop.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Staff.FirstName)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { workshopId = item.WorkshopId, StaffId = item.StaffId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
